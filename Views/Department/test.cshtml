@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1 id="halert">Hello view</h1>
+
+<style>
+    h1{
+        color: blue;
+    }
+</style>
+
+
+<script>
+    var d=document.getElementById("halert");
+    d.addEventListener("click",()=>alert("Hello from view"));
+</script>
+
+@{
+    int x = 5;
+}
+
+@* Inline statement *@
+<h2>value of x=@x</h2>
+
+@{if(x>0)
+{
+    <h3>x is positive</h3>
+}
+else
+{
+    <h3>x is negative</h3>
+}}
+@for (int i = 0; i < 5; i++)
+{
+    <ol>@i</ol>
+}
+
+
+
+
+
+
+
+
+

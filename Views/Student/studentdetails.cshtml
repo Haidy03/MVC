@@ -1,0 +1,39 @@
+﻿@* 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Address</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+
+       
+            <tr>
+                <td>@Model.ssn</td>
+                <td>@Model.Name</td>
+                <td>@Model.Age</td>
+                <td>@Model.Address</td>
+                <td><img src="@Url.Content(Model.Image)" alt="Image" width="100" height="100" /></td>
+            </tr>
+       
+
+
+    </tbody>
+</table> *@
+
+<div class="card" style="width: 18rem;">
+    <img src="~/images/@Model.Image" alt="Image" width="100" height="100" class="card-img-top" />
+    <div class="card-body">
+        <h5 class="card-title" style="color:red">Student Details</h5>
+        <p class="card-text">student id = @Model.ssn</p>
+        <p class="card-text">student Name = @Model.Name</p>
+        <p class="card-text">student Age = @Model.Age</p>
+        <p class="card-text">student Address = @Model.Address</p>
+        
+        
+    </div>
+</div>
