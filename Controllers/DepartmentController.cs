@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.context;
+using WebApplication1.Models;
+using WebApplication1.Models.ViewModel;
 
 namespace WebApplication1.Controllers
 {
@@ -17,8 +19,8 @@ namespace WebApplication1.Controllers
         //}
         public IActionResult getall()
         {
-            var depts=db.Departments.ToList();
-            return View("index",depts);
+            var depts = db.Departments.ToList();
+            return View("index", depts);
         }
         public JsonResult getjson()
         {
@@ -36,7 +38,7 @@ namespace WebApplication1.Controllers
         //Department/mix?id=1
         public IActionResult mix(int id)
         {
-            if (id==1)
+            if (id == 1)
             {
                 //ViewResult vr = new ViewResult();
                 //vr.ViewName = "test";
@@ -49,5 +51,24 @@ namespace WebApplication1.Controllers
                 return js;
             }
         }
+
+        //department/getAllVM
+        public IActionResult getAllVM()
+        {
+
+            var dept = db.Departments.Select(d =>
+            new DepartmentVM
+            {
+                deptName = d.Name,
+                deptManager = d.Manager,
+                stdcount = d.Students.Count,
+                Inscount = d.Instructors.Count,
+                instNames = d.Instructors.Select(i => i.Name).ToList(),
+                stdNames = d.Students.Select(s => s.Name).ToList(),
+
+            }).ToList();
+            return View("getAllVM", dept);
+        }
+
     }
-}
+    }

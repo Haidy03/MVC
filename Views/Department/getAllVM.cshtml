@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "getAllVM";
+}
+
+@model IEnumerable<DepartmentVM>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Manager</th>
+            <th>Students Count</th>
+            <th>Instructors Count</th>
+            <th>Students</th>
+            <th>Instructors</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dept in Model)
+        {
+            <tr>
+                <td>@dept.deptName</td>
+                <td>@dept.deptManager</td>
+                <td>@dept.stdcount</td>
+                <td>@dept.Inscount</td>
+                <td>@string.Join(", ", dept.stdNames)</td>
+                <td>@string.Join(", ", dept.instNames)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -3,7 +3,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.context
 {
-    public class CompanyContext: DbContext
+    public class CompanyContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -11,5 +11,16 @@ namespace WebApplication1.context
         }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<Instructor> Instructors { get; set; }
+        public virtual DbSet<StudentCourse> StudentCourses { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<StudentCourse>()
+                .HasKey(sc => new { sc.studentId, sc.courseId });
+
+        }
     }
 }
