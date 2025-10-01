@@ -28,6 +28,14 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Course/getallcourses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXGdldGFsbGNvdXJzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Course/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXE5ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Department/getAllVM.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxnZXRBbGxWTS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,12 +52,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Home/Indexxhome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleHhob21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Instructor/EditIns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxFZGl0SW5zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Instructor/getall.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxnZXRhbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Instructor/NewIns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxOZXdJbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Shared/_mylayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9teWxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml]
@@ -58,6 +86,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Student/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Student/editt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxlZGl0dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Haidy/ITI/Tasks/7-MVC/WebApplication1/WebApplication1/Views/Student/Index.cshtml]

@@ -1,0 +1,45 @@
+﻿@model List<Instructor>
+
+@{
+    ViewData["Title"] = "getall";
+}
+
+
+<a asp-controller="Instructor" asp-action="NewIns" class="btn btn-danger">Add</a>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Age</th>
+            <th scope="col">Degree</th>
+            <th scope="col">Department</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.SSN</td>
+                <td>@d.Name</td>
+                <td>@d.Address</td>
+                <td>@d.Salary</td>
+                <td>@d.Age</td>
+                <td>@d.Degree</td>
+                <td>@d.DepartId</td>
+                <td>
+                    <a asp-controller="Instructor" asp-action="EditIns" asp-route-ssn="@d.SSN" class="btn btn-success">Edit</a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>

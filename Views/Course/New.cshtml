@@ -1,0 +1,21 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New</h1>
+
+<form asp-controller="Course" asp-action="SaveNew" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Course Name</label>
+        <input type="text" class="form-control" asp-for="Name">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Topic" class="form-label">Course Topic</label>
+        <input type="text" class="form-control" asp-for="Topic">
+
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
