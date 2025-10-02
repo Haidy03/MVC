@@ -31,5 +31,31 @@ namespace WebApplication1.Controllers
             }
             return View("New", coursefromrequest);
         }
+
+        public IActionResult Edit(int ssn)
+        {
+            var course = db.Courses.FirstOrDefault(c => c.Num == ssn);
+            if (course == null)
+            {
+                return NotFound(); 
+            }
+            return View("Edit", course);
+        }
+
+        [HttpPost]
+        public IActionResult SaveEdit(Course coursefromreq) 
+        {
+           
+            if (coursefromreq.Name != null && coursefromreq.Topic != null) 
+            {
+                var coursefromdb = db.Courses.FirstOrDefault(c => c.Num == coursefromreq.Num);
+                coursefromdb.Name=coursefromreq.Name;
+                coursefromdb.Topic=coursefromreq.Topic;
+                db.SaveChanges();
+                return RedirectToAction(nameof(getAll));
+            }
+            return View("Edit", coursefromreq);
+        }
+
     }
 }

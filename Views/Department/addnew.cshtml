@@ -1,0 +1,23 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "addnew";
+}
+
+<h1>add new Department</h1>
+
+
+<form asp-controller="Department" asp-action="SaveNew" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Department Name</label>
+        <input class="form-control" asp-for="Name">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Manager" class="form-label">Department Manager Name</label>
+        <input class="form-control" asp-for="Manager">
+    </div>
+   
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

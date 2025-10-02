@@ -2,11 +2,14 @@
 {
     public class InswithDeptsVM
     {
+        public int SSN { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public int Salary { get; set; }
         public int Age { get; set; }
         public float Degree { get; set; }
+        public int DeptId { get; set; }
+        public string DeptName { get; set; }
 
         public List<Department> departments { get; set; }=new List<Department>();
     }

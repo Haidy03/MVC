@@ -3,8 +3,8 @@
     ViewData["Title"] = "EditIns";
 }
 
-<form asp-action="EditIns" asp-controller="instructor" method="post">
-
+<form asp-action="saveedit" asp-controller="instructor" method="post">
+    <input asp-for="SSN" type="hidden" value="@Model.SSN"/>
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Instructor Name</label>
         <input class="form-control" asp-for="Name">
@@ -27,11 +27,12 @@
     </div>
     <div class="mb-3">
         <label>Instructor Department</label>
-        <select class="form-control" >
-           
-
+        <select class="form-control" asp-for="DeptId" asp-items="@(new SelectList(Model.departments, "ID", "Name"))">
+            <option value="">-- Select Department --</option>
         </select>
+
     </div>
+
 
 
     <button type="submit" class="btn btn-primary">Submit</button>

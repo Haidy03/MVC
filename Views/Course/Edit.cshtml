@@ -1,0 +1,23 @@
+﻿
+
+@model Course
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="SaveEdit" method="post" asp-controller="Course">
+    <input asp-for="Num" type="hidden" value="@Model.Num" />
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Course Name</label>
+        <input class="form-control" asp-for="Name" value="@Model?.Name">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Topic" class="form-label">Course Topic</label>
+        <input class="form-control" asp-for="Topic" value="@Model?.Topic">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -22,6 +22,43 @@ namespace WebApplication1.Controllers
             var depts = db.Departments.ToList();
             return View("index", depts);
         }
+
+        public IActionResult addnew()
+        {
+            return View("addnew");
+        }
+
+        [HttpPost]
+        public IActionResult SaveNew(Department dept)
+        {
+            if(dept.Name != null && dept.Manager!=null)
+            {
+                db.Departments.Add(dept);
+                db.SaveChanges();
+                return RedirectToAction(nameof(getall));
+            }
+            return View("addnew", dept);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var dept = db.Departments.FirstOrDefault(d => d.ID == id);
+            return View("edit", dept);
+        }
+
+        [HttpPost]
+        public IActionResult saveedit(Department deptfromrequest)
+        {
+            if (deptfromrequest.Name != null && deptfromrequest.Manager != null)
+            {
+                var deptfromdb = db.Departments.FirstOrDefault(d => d.ID == deptfromrequest.ID);
+                deptfromdb.Name = deptfromrequest.Name;
+                deptfromdb.Manager = deptfromrequest.Manager;   
+                db.SaveChanges();
+                return RedirectToAction(nameof(getall));
+            }
+            return View("edit", deptfromrequest);
+        }
         public JsonResult getjson()
         {
             JsonResult js = new JsonResult(new { name = "haidy", age = 22 });

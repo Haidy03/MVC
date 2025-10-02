@@ -1,4 +1,4 @@
-﻿@model List<Instructor>
+﻿@model List<WebApplication1.Models.ViewModel.InswithDeptsVM>
 
 @{
     ViewData["Title"] = "getall";
@@ -33,7 +33,7 @@
                 <td>@d.Salary</td>
                 <td>@d.Age</td>
                 <td>@d.Degree</td>
-                <td>@d.DepartId</td>
+                <td>@d.DeptName</td>
                 <td>
                     <a asp-controller="Instructor" asp-action="EditIns" asp-route-ssn="@d.SSN" class="btn btn-success">Edit</a>
                 </td>

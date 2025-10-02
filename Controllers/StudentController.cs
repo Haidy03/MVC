@@ -21,6 +21,8 @@ namespace WebApplication1.Controllers
         //Student/getall
         public IActionResult Add()                 //It will just open the form
         {
+            var depts = db.Departments.ToList();
+            ViewBag.department = depts;
             return View();
         }
 

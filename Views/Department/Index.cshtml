@@ -1,9 +1,23 @@
-﻿<table class="table">
+﻿
+
+@model List<Department>
+
+
+
+
+
+<a asp-action="addnew" asp-controller="Department" class="btn btn-danger">Add new department</a>
+
+<br /> <br/>
+
+
+<table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Manager</th>
+            <th></th>
            
         </tr>
     </thead>
@@ -16,6 +30,10 @@
                 <td>@d.ID</td>
                 <td>@d.Name</td>
                 <td>@d.Manager</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@d.ID" class="btn btn-success">Edit</a>
+                    @* <a asp-action="Delete" asp-route-id="@d.ID" class="btn btn-danger">Delete</a> *@
+                </td>
             </tr>
             }
            

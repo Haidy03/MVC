@@ -10,7 +10,23 @@ namespace WebApplication1.Controllers
         CompanyContext db = new CompanyContext();
         public IActionResult getall()
         {
-            var instructors = db.Instructors.ToList();
+            var instructors = db.Instructors
+                      .Select(ins => new InswithDeptsVM
+                      {
+                          SSN = ins.SSN,
+                          Name = ins.Name,
+                          Address = ins.Address,
+                          Salary = ins.Salary,
+                          Age = ins.Age,
+                          Degree = ins.Degree,
+                          DeptId = ins.DepartId,
+                          DeptName = ins.Department.Name
+                          
+                      })
+                      .ToList();
+
+            //return View("getall", instructors);
+            //var instructors = db.Instructors.ToList();
             return View("getall",instructors);
         }
 
@@ -35,8 +51,36 @@ namespace WebApplication1.Controllers
         public IActionResult EditIns(int ssn)
         {
             var ins = db.Instructors.FirstOrDefault(i => i.SSN == ssn);
-            //InswithDeptsVM insvm = new InswithDeptsVM();
-            return View( ins);
+            InswithDeptsVM insvm = new InswithDeptsVM
+            {
+                SSN = ins.SSN,
+                Name = ins.Name,
+                Address = ins.Address,
+                Salary = ins.Salary,
+                Age = ins.Age,
+                Degree = ins.Degree,
+                DeptId = ins.DepartId,
+                departments = db.Departments.ToList()
+
+            };
+            return View(insvm);
+        }
+
+        public IActionResult SaveEdit(InswithDeptsVM _instfromreq)
+        {
+            var ins = db.Instructors.FirstOrDefault(i => i.SSN == _instfromreq.SSN);
+            if (ins != null)
+            {
+                ins.Name = _instfromreq.Name;
+                ins.Address = _instfromreq.Address;
+                ins.Salary = _instfromreq.Salary;
+                ins.Age = _instfromreq.Age;
+                ins.Degree = _instfromreq.Degree;
+                ins.DepartId = _instfromreq.DeptId;
+                db.SaveChanges();
+                return RedirectToAction(nameof(getall));
+            }
+            return View("EditIns", _instfromreq);
         }
     }
 }
