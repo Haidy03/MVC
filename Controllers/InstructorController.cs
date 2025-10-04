@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Runtime.Intrinsics.X86;
 using WebApplication1.context;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
@@ -31,25 +32,31 @@ namespace WebApplication1.Controllers
         }
 
         public IActionResult NewIns() 
-        { 
+        {
+
             var depts = db.Departments.ToList();
             ViewBag.department = depts;
+
             return View("NewIns");
         }
 
         public IActionResult SaveNew(Instructor _instfromreq)
         {
+  
             if (_instfromreq.Name != null)
             {
-                db.Instructors.Add(_instfromreq);
-                db.SaveChanges();
-                return RedirectToAction(nameof(getall));
+                    db.Instructors.Add(_instfromreq);
+                    db.SaveChanges();
+                    return RedirectToAction(nameof(getall));
             }
-            return View("New", _instfromreq);
+         
+            
+            return View("NewIns", _instfromreq);
         }
 
         public IActionResult EditIns(int ssn)
         {
+
             var ins = db.Instructors.FirstOrDefault(i => i.SSN == ssn);
             InswithDeptsVM insvm = new InswithDeptsVM
             {

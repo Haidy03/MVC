@@ -7,17 +7,16 @@
 
 <h1>Edit</h1>
 
-<form asp-action="SaveEdit" method="post" asp-controller="Course">
-    <input asp-for="Num" type="hidden" value="@Model.Num" />
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label">Course Name</label>
-        <input class="form-control" asp-for="Name" value="@Model?.Name">
-    </div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="mb-3">
-        <label asp-for="Topic" class="form-label">Course Topic</label>
-        <input class="form-control" asp-for="Topic" value="@Model?.Topic">
-    </div>
+
+ <form asp-action="SaveEdit" method="post" asp-controller="Course">
+    <input type="hidden" asp-for="Num" />
+    <partial name="_CourseFormPV"></partial>
     
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</form> 
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>

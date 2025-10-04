@@ -1,4 +1,4 @@
-﻿
+﻿@* @model WebApplication1.Models.ViewModel.InswithDeptsVM *@
 
 @model Instructor
 @{
@@ -8,7 +8,12 @@
 
 <form asp-controller="instructor" asp-action="SaveNew" method="post">
 
-    <div class="mb-3">
+
+
+
+    <partial name="_InstructorDataFormPV"></partial>
+
+    @* <div class="mb-3">
         <label asp-for="Name" class="form-label">Instructor Name</label>
         <input type="text" class="form-control" asp-for="Name">
     </div>
@@ -27,12 +32,14 @@
     <div class="mb-3">
         <label asp-for="Degree" class="form-label">Instructor Degree</label>
         <input type="text" class="form-control" asp-for="Degree">
-    </div>
+    </div> *@
+
     <div class="mb-3" >
         <label asp-for="DepartId" class="form-label">Instructor Department</label>
         <select class="form-control" asp-for="DepartId">
             @foreach (Department d in ViewBag.department)
                 {
+                
                 <option value="@d.ID"> @d.Name</option>
                 }
 

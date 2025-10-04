@@ -6,7 +6,7 @@
 
 @model List<Course>
 
-<a asp-controller="Course" asp-action="New" class="btn btn-danger">Add</a>
+<a asp-controller="Course" asp-action="New" class="btn btn-info">Add</a>
 <br />
 <br />
 <table class="table">
@@ -15,6 +15,10 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Topic</th>
+            <th scope="col">Degree</th>
+            <th scope="col">Min Degree</th>
+            <th></th>
+            <th></th>
             <th></th>
 
         </tr>
@@ -27,8 +31,18 @@
                 <td>@d.Num</td>
                 <td>@d.Name</td>
                 <td>@d.Topic</td>
+                <td>@d.Degree</td>
+                <td>@d.MinDegree</td>
                 <td>
                     <a asp-controller="Course" asp-action="Edit" asp-route-ssn="@d.Num" class="btn btn-success">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Course" asp-action="Details" asp-route-ssn="@d.Num" class="btn btn-primary">Details</a>
+                </td>
+                <td>
+                    <a asp-controller="Course" asp-action="Delete" asp-route-ssn="@d.Num" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">
+                        Delete
+                        </a>
                 </td>
             </tr>
         }

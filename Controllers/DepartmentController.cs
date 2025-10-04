@@ -31,7 +31,8 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult SaveNew(Department dept)
         {
-            if(dept.Name != null && dept.Manager!=null)
+            //if(dept.Name != null && dept.Manager!=null)
+            if(ModelState.IsValid)
             {
                 db.Departments.Add(dept);
                 db.SaveChanges();
@@ -49,8 +50,9 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult saveedit(Department deptfromrequest)
         {
-            if (deptfromrequest.Name != null && deptfromrequest.Manager != null)
-            {
+            //if (deptfromrequest.Name != null && deptfromrequest.Manager != null)
+            if (ModelState.IsValid)
+              {
                 var deptfromdb = db.Departments.FirstOrDefault(d => d.ID == deptfromrequest.ID);
                 deptfromdb.Name = deptfromrequest.Name;
                 deptfromdb.Manager = deptfromrequest.Manager;   

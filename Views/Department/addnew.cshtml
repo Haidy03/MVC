@@ -1,20 +1,25 @@
-﻿@model Department
+﻿
+
+@model Department
 @{
     ViewData["Title"] = "addnew";
 }
 
 <h1>add new Department</h1>
 
+<div asp-validation-summary="All" class="text-danger"></div>           @*  Must be above the form not inside its tag  *@
 
 <form asp-controller="Department" asp-action="SaveNew" method="post">
-
+    
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Department Name</label>
         <input class="form-control" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label asp-for="Manager" class="form-label">Department Manager Name</label>
         <input class="form-control" asp-for="Manager">
+        <span asp-validation-for="Manager" class="text-danger"></span>
     </div>
    
 

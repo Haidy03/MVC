@@ -1,0 +1,55 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+
+
+@model studdeptcourwithstdcrsVM
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+    }
+</style>
+
+<div class="card w-75 mb-3">
+    <div class="card-body">
+        <h5 class="card-title text-danger">Student Name</h5>
+        <p class="card-text"> @Model.StdName </p>
+
+        <h5 class="card-title text-danger">Department Name</h5>
+        <p class="card-text">@Model.DeptName</p>
+
+        <h5 class="card-title text-danger">Courses</h5>
+        <table>
+            <tr>
+                <th>Course Name</th>
+                <th>Student Grade</th>
+                <th>Min Degree</th>
+            </tr>
+            @foreach (var sc in Model.StudentCourses)
+            {
+                bool isFail = sc.Grade < sc.Course?.MinDegree;
+                <tr>
+                    <td>@sc.Course?.Name</td>
+                    <td style="color:@(isFail ? "red" : "black")">
+                        @sc.Grade
+                    </td>
+                    <td>@sc.Course?.MinDegree</td>
+                    
+                </tr>
+               
+            }
+        </table>
+        
+
+
+    </div>
+</div>
+

@@ -1,0 +1,33 @@
+﻿@model WebApplication1.Models.ViewModel.InswithDeptsVM
+
+<div class="mb-3">
+    <label asp-for="Name" class="form-label">Instructor Name</label>
+    <input class="form-control" asp-for="Name">
+</div>
+<div class="mb-3">
+    <label asp-for="Address" class="form-label">Instructor Address</label>
+    <input class="form-control" asp-for="Address">
+</div>
+<div class="mb-3">
+    <label asp-for="Salary" class="form-label">Instructor Salary</label>
+    <input class="form-control" asp-for="Salary">
+</div>
+<div class="mb-3">
+    <label asp-for="Age" class="form-label">Instructor Age</label>
+    <input class="form-control" asp-for="Age">
+</div>
+<div class="mb-3">
+    <label asp-for="Degree" class="form-label">Instructor Degree</label>
+    <input class="form-control" asp-for="Degree">
+</div>
+@* <div class="mb-3">
+    <label>Instructor Department</label>
+    <select class="form-control" asp-for="DeptId" asp-items="@(new SelectList(Model.departments, "ID", "Name"))">
+        <option value="">-- Select Department --</option>
+    </select>
+
+</div> *@
+
+
+
+@* <button type="submit" class="btn btn-primary">Submit</button> *@

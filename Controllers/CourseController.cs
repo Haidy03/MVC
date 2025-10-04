@@ -23,7 +23,8 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult SaveNew(Course coursefromrequest)
         {
-            if(coursefromrequest.Name != null && coursefromrequest.Topic != null)
+            //if(coursefromrequest.Name != null && coursefromrequest.Topic != null)
+            if(ModelState.IsValid)
             {
                 db.Courses.Add(coursefromrequest);
                 db.SaveChanges();
@@ -46,16 +47,48 @@ namespace WebApplication1.Controllers
         public IActionResult SaveEdit(Course coursefromreq) 
         {
            
-            if (coursefromreq.Name != null && coursefromreq.Topic != null) 
-            {
+            //if (coursefromreq.Name != null && coursefromreq.Topic != null)
+            if (ModelState.IsValid)
+                {
                 var coursefromdb = db.Courses.FirstOrDefault(c => c.Num == coursefromreq.Num);
                 coursefromdb.Name=coursefromreq.Name;
                 coursefromdb.Topic=coursefromreq.Topic;
+                coursefromdb.Degree = coursefromreq.Degree;
+                coursefromdb.MinDegree = coursefromreq.MinDegree;
                 db.SaveChanges();
                 return RedirectToAction(nameof(getAll));
             }
             return View("Edit", coursefromreq);
         }
+
+        public IActionResult Details(int ssn)
+        {
+            var course = db.Courses.FirstOrDefault(c => c.Num == ssn);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            return View("Details", course);
+        }
+
+        public IActionResult Delete(int ssn)
+        {
+            var course = db.Courses.FirstOrDefault(c => c.Num == ssn);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                db.Courses.Remove(course);
+                db.SaveChanges();
+                return RedirectToAction(nameof(getAll));
+            }
+        }
+
+        //public IActionResult CheckDegree(float MinDegree) {
+        //    if(MinDegree<db.Courses.de)
+        //}
 
     }
 }

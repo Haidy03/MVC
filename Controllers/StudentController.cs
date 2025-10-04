@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 using WebApplication1.context;
 using WebApplication1.Models;
+using WebApplication1.Models.ViewModel;
 
 namespace WebApplication1.Controllers
 {
@@ -62,5 +64,22 @@ namespace WebApplication1.Controllers
             return View("editt", stdfromrequest);
         }
 
+
+        public IActionResult Details(int ssn)
+        {
+            var student = db.Students.Include(s => s.Department).FirstOrDefault(s => s.ssn == ssn);
+            var studentCourses = db.StudentCourses.Where(sc => sc.studentId == ssn).Include(sc => sc.Course).ToList();
+            var courseNames = studentCourses.Select(sc => sc.Course.Name).ToList();
+            var std = new studdeptcourwithstdcrsVM()
+            {
+                StdName = student.Name,
+                DeptName = student.Department?.Name,
+                StudentCourses = studentCourses,
+                crsname = string.Join(", ", courseNames),
+                
+            };
+
+            return(View("Details", std));
+        }
     }
 }

@@ -6,16 +6,18 @@
 
 <h1>New</h1>
 
-<form asp-controller="Course" asp-action="SaveNew" method="post">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label">Course Name</label>
-        <input type="text" class="form-control" asp-for="Name">
-    </div>
-    <div class="mb-3">
-        <label asp-for="Topic" class="form-label">Course Topic</label>
-        <input type="text" class="form-control" asp-for="Topic">
 
-    </div>
+
+ <form asp-controller="Course" asp-action="SaveNew" method="post">
+
+    <partial name="_CourseFormPV"></partial>
+
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</form> 
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
