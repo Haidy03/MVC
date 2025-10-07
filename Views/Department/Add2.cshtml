@@ -1,0 +1,20 @@
+﻿
+
+@model Department
+
+<form asp-action="Add2" method="post">
+    
+  
+   
+
+    <label>Name</label>
+    <input asp-for="Name" class="form-control" />
+
+    <label asp-for="Manager" class="form-label">Department Manager Name</label>
+    <input class="form-control" asp-for="Manager">
+
+    <label>Location</label>
+    <input asp-for="Location" class="form-control" placeholder="EG or USA" />
+
+    <button type="submit" class="btn btn-primary mt-3">Add Department</button>
+</form>

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using WebApplication1.context;
+using WebApplication1.Filters;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
 
@@ -80,6 +81,12 @@ namespace WebApplication1.Controllers
             };
 
             return(View("Details", std));
+        }
+
+        [CheckUserFilter]
+        public IActionResult TestFilter()
+        {
+            return Content("Welcome You have access to this page");
         }
     }
 }

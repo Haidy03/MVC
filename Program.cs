@@ -1,3 +1,4 @@
+using WebApplication1.Filters;
 using WebApplication1.Middlewares;
 
 namespace WebApplication1
@@ -9,7 +10,13 @@ namespace WebApplication1
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+
+            //builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add<GlobalExceptionHandleFilter>();
+            });
+
             builder.Services.AddSession(options=>
             {
                 options.IdleTimeout= TimeSpan.FromMinutes(30);
@@ -17,8 +24,8 @@ namespace WebApplication1
 
             var app = builder.Build();
 
-            app.UseMiddleware<Middlewares.GlobalExceptionHandleMiddleware>();
-            app.UseMiddleware<LoggingMW>();
+            // app.UseMiddleware<Middlewares.GlobalExceptionHandleMiddleware>();
+            //app.UseMiddleware<LoggingMW>();
 
             #region Built in MW
             // Configure the HTTP request pipeline.

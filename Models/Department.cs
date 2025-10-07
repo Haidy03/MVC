@@ -13,6 +13,8 @@ namespace WebApplication1.Models
         public string Manager { get; set; }
 
 
+        public string Location { get; set; }
+
         //nav prop
         public virtual List<Student> Students { get; set; }=new List<Student>();
         public virtual List<Instructor> Instructors { get; set; } = new List<Instructor>();

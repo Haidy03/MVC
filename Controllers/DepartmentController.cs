@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.context;
+using WebApplication1.Filters;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
 
@@ -107,6 +108,22 @@ namespace WebApplication1.Controllers
 
             }).ToList();
             return View("getAllVM", dept);
+        }
+
+        public IActionResult Add2()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [CheckDepartmentLocationFilter]
+        [AddFooterFilter]
+        public IActionResult Add2(Department dept)
+        {
+            db.Departments.Add(dept);
+            db.SaveChanges();
+            // return RedirectToAction("GetAll");                                 uncomment this to check the [CheckDepartmentLocationFilter] 
+            return Content($"Department '{dept.Name}' created successfully!");
         }
 
     }
