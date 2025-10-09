@@ -17,8 +17,10 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Manager</th>
+            <th scope="col">Location</th>
             <th></th>
-           
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,8 +32,17 @@
                 <td>@d.ID</td>
                 <td>@d.Name</td>
                 <td>@d.Manager</td>
+                <td>@d.Location</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@d.ID" class="btn btn-success">Edit</a>
+                    @* <a asp-action="Delete" asp-route-id="@d.ID" class="btn btn-danger">Delete</a> *@
+                </td>
+                <td>
+                    <a asp-action="getAllVM" class="btn btn-info">Details</a>
+                    @* <a asp-action="Delete" asp-route-id="@d.ID" class="btn btn-danger">Delete</a> *@
+                </td>
+                <td>
+                    <a asp-action="delete" asp-route-id="@d.ID" class="btn btn-danger">Delete</a>
                     @* <a asp-action="Delete" asp-route-id="@d.ID" class="btn btn-danger">Delete</a> *@
                 </td>
             </tr>

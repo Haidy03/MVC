@@ -18,7 +18,11 @@
         <label asp-for="Manager" class="form-label">Department Manager Name</label>
         <input class="form-control" asp-for="Manager" value="@Model?.Manager">
     </div>
-   
+    <div class="mb-3">
+        <label asp-for="Location" class="form-label">Department Location</label>
+        <input class="form-control" asp-for="Location">
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

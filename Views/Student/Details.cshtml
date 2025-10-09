@@ -38,7 +38,7 @@
                 bool isFail = sc.Grade < sc.Course?.MinDegree;
                 <tr>
                     <td>@sc.Course?.Name</td>
-                    <td style="color:@(isFail ? "red" : "black")">
+                    <td style="color:@(isFail ? "red" : "green")">
                         @sc.Grade
                     </td>
                     <td>@sc.Course?.MinDegree</td>

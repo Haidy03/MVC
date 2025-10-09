@@ -3,12 +3,13 @@ using WebApplication1.context;
 using WebApplication1.Filters;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
+using WebApplication1.Repository;
 
 namespace WebApplication1.Controllers
 {
     public class DepartmentController : Controller
     {
-        CompanyContext db = new CompanyContext();
+       CompanyContext db = new CompanyContext();
         //public ContentResult getall()
         // {
         //     //Declare object of ContentResult
@@ -18,12 +19,29 @@ namespace WebApplication1.Controllers
         //     //return
         //     return res;
         //}
+
+        DepartmentRepository DepartmentRepository= new DepartmentRepository();
         public IActionResult getall()
         {
-            var depts = db.Departments.ToList();
+            var depts = DepartmentRepository.GetAll();
             return View("index", depts);
         }
 
+        public IActionResult delete(int id)
+        {
+            var dept = DepartmentRepository.GetById(id);
+            if (dept != null)
+            {
+                DepartmentRepository.Delete(id);
+                DepartmentRepository.Save();
+                return RedirectToAction(nameof(getall));
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+        }
         public IActionResult addnew()
         {
             return View("addnew");
@@ -35,8 +53,9 @@ namespace WebApplication1.Controllers
             //if(dept.Name != null && dept.Manager!=null)
             if(ModelState.IsValid)
             {
-                db.Departments.Add(dept);
-                db.SaveChanges();
+                DepartmentRepository.Add(dept);
+                DepartmentRepository.Save();
+                
                 return RedirectToAction(nameof(getall));
             }
             return View("addnew", dept);
@@ -44,7 +63,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Edit(int id)
         {
-            var dept = db.Departments.FirstOrDefault(d => d.ID == id);
+            var dept = DepartmentRepository.GetById(id);
             return View("edit", dept);
         }
 
@@ -54,10 +73,12 @@ namespace WebApplication1.Controllers
             //if (deptfromrequest.Name != null && deptfromrequest.Manager != null)
             if (ModelState.IsValid)
               {
-                var deptfromdb = db.Departments.FirstOrDefault(d => d.ID == deptfromrequest.ID);
+                // var deptfromdb = db.Departments.FirstOrDefault(d => d.ID == deptfromrequest.ID);
+                var deptfromdb= DepartmentRepository.GetById(deptfromrequest.ID);
                 deptfromdb.Name = deptfromrequest.Name;
                 deptfromdb.Manager = deptfromrequest.Manager;   
-                db.SaveChanges();
+                DepartmentRepository.Update(deptfromdb);
+                DepartmentRepository.Save();
                 return RedirectToAction(nameof(getall));
             }
             return View("edit", deptfromrequest);
@@ -95,18 +116,18 @@ namespace WebApplication1.Controllers
         //department/getAllVM
         public IActionResult getAllVM()
         {
+            var dept = DepartmentRepository.departmentVMs();
+            //var dept =db.Departments.Select(d =>
+            //new DepartmentVM
+            //{
+            //    deptName = d.Name,
+            //    deptManager = d.Manager,
+            //    stdcount = d.Students.Count,
+            //    Inscount = d.Instructors.Count,
+            //    instNames = d.Instructors.Select(i => i.Name).ToList(),
+            //    stdNames = d.Students.Select(s => s.Name).ToList(),
 
-            var dept = db.Departments.Select(d =>
-            new DepartmentVM
-            {
-                deptName = d.Name,
-                deptManager = d.Manager,
-                stdcount = d.Students.Count,
-                Inscount = d.Instructors.Count,
-                instNames = d.Instructors.Select(i => i.Name).ToList(),
-                stdNames = d.Students.Select(s => s.Name).ToList(),
-
-            }).ToList();
+            //}).ToList();
             return View("getAllVM", dept);
         }
 
@@ -120,8 +141,8 @@ namespace WebApplication1.Controllers
         [AddFooterFilter]
         public IActionResult Add2(Department dept)
         {
-            db.Departments.Add(dept);
-            db.SaveChanges();
+              DepartmentRepository.Add(dept);
+              DepartmentRepository.Save();
             // return RedirectToAction("GetAll");                                 uncomment this to check the [CheckDepartmentLocationFilter] 
             return Content($"Department '{dept.Name}' created successfully!");
         }

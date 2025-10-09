@@ -19,6 +19,7 @@
             <th scope="col">Degree</th>
             <th scope="col">Department</th>
             <th></th>
+            <th></th>
 
         </tr>
     </thead>
@@ -36,6 +37,9 @@
                 <td>@d.DeptName</td>
                 <td>
                     <a asp-controller="Instructor" asp-action="EditIns" asp-route-ssn="@d.SSN" class="btn btn-success">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Instructor" asp-action="Delete" asp-route-ssn="@d.SSN" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

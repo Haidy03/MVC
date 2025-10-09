@@ -13,7 +13,7 @@
             <th scope="col">Image</th>
             <th></th>
             <th></th>
-
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +30,10 @@
                     <a asp-controller="Student" asp-action="Edit" asp-route-ssn="@d.ssn" class="btn btn-success">Edit</a>
                 </td>
                 <td>
-                    <a asp-controller="Student" asp-action="Details" asp-route-ssn="@d.ssn" class="btn btn-success">Details</a>
+                    <a asp-controller="Student" asp-action="Details" asp-route-ssn="@d.ssn" class="btn btn-info">Details</a>
+                </td>
+                <td>
+                    <a asp-controller="Student" asp-action="Delete" asp-route-ssn="@d.ssn" class="btn btn-danger">Delete</a>
                 </td>
              </tr>
             }
