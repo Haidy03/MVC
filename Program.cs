@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using WebApplication1.context;
@@ -5,6 +6,7 @@ using WebApplication1.Controllers;
 using WebApplication1.Filters;
 using WebApplication1.IRepo;
 using WebApplication1.Middlewares;
+using WebApplication1.Models;
 using WebApplication1.Repository;
 
 namespace WebApplication1
@@ -27,6 +29,9 @@ namespace WebApplication1
             {
                 options.IdleTimeout= TimeSpan.FromMinutes(30);
             });
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<CompanyContext>();
             //Custom sevice 
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
@@ -55,6 +60,7 @@ namespace WebApplication1
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();

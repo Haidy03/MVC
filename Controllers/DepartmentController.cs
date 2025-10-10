@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplication1.context;
 using WebApplication1.Filters;
 using WebApplication1.IRepo;
@@ -27,6 +28,8 @@ namespace WebApplication1.Controllers
         {
             DepartmentRepository = departmentRepo;
         }
+
+        [Authorize]
         public IActionResult getall()
         {
             var depts = DepartmentRepository.GetAll();

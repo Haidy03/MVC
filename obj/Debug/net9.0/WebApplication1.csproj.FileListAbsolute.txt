@@ -343,3 +343,8 @@ C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\bin\Debug\net9.0\zh-Han
 C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\obj\Debug\net9.0\compressed\spoxkb1srm-devepoo3hg.gz
 C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\obj\Debug\net9.0\compressed\c26kvyudi6-gzmkbghbj8.gz
 C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\obj\Debug\net9.0\compressed\38506yl7do-8ajugntr61.gz
+C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+C:\Haidy\ITI\Tasks\7-MVC\WebApplication1\WebApplication1\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll

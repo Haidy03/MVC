@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
 namespace WebApplication1.context
 {
-    public class CompanyContext : DbContext
+    public class CompanyContext : IdentityDbContext<ApplicationUser>                       // DbContext
     {
 
         public CompanyContext():base()
@@ -27,6 +28,8 @@ namespace WebApplication1.context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<StudentCourse>()
                 .HasKey(sc => new { sc.studentId, sc.courseId });
 

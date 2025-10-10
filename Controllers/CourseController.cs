@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity;
 using WebApplication1.context;
 using WebApplication1.IRepo;
 using WebApplication1.Models;
@@ -9,6 +11,7 @@ namespace WebApplication1.Controllers
     public class CourseController : Controller
     {
         //CompanyContext db = new CompanyContext();
+        
 
         ICourseRepository courseRepository;
        public CourseController(ICourseRepository courseRepo)
