@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.context;
 using WebApplication1.Filters;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
 using WebApplication1.Repository;
@@ -9,7 +10,7 @@ namespace WebApplication1.Controllers
 {
     public class DepartmentController : Controller
     {
-       CompanyContext db = new CompanyContext();
+        // CompanyContext db = new CompanyContext();
         //public ContentResult getall()
         // {
         //     //Declare object of ContentResult
@@ -20,7 +21,12 @@ namespace WebApplication1.Controllers
         //     return res;
         //}
 
-        DepartmentRepository DepartmentRepository= new DepartmentRepository();
+        IDepartmentRepository DepartmentRepository;
+
+        public DepartmentController(IDepartmentRepository departmentRepo)
+        {
+            DepartmentRepository = departmentRepo;
+        }
         public IActionResult getall()
         {
             var depts = DepartmentRepository.GetAll();

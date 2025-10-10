@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 using WebApplication1.context;
 using WebApplication1.Filters;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
 using WebApplication1.Repository;
@@ -13,9 +14,16 @@ namespace WebApplication1.Controllers
     {
         //CompanyContext db = new CompanyContext();
 
-        StudentRepository studentRepository = new StudentRepository();
-        DepartmentRepository deptRepo = new DepartmentRepository();
-        StudentCourseRepository studentCourseRepo = new StudentCourseRepository();
+        IStudentRepository studentRepository;
+        IDepartmentRepository deptRepo;
+        IStudentCourseRepository studentCourseRepo;
+
+        public StudentController(IStudentRepository studentRepo, IDepartmentRepository departmentRepos, IStudentCourseRepository studentCourseReposs)
+        {
+            studentRepository=studentRepo;
+            deptRepo=departmentRepos;
+            studentCourseRepo=studentCourseReposs;
+        }
 
         public IActionResult getall()
         {

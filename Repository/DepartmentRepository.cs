@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApplication1.context;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
 
 namespace WebApplication1.Repository
 {
-    public class DepartmentRepository
+    public class DepartmentRepository: IDepartmentRepository
     {
         CompanyContext db;
 
-        public DepartmentRepository()
+        public DepartmentRepository(CompanyContext context)
         {
-            db = new CompanyContext();
+            db = context;                           //new CompanyContext();
         }
 
         // CRUD Operations

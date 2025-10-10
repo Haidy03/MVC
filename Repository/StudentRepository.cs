@@ -1,16 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApplication1.context;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 
 namespace WebApplication1.Repository
 {
-    public class StudentRepository
+    public class StudentRepository: IStudentRepository
     {
         CompanyContext db;
 
-        public StudentRepository()
+        public StudentRepository(CompanyContext context)
         {
-            db = new CompanyContext();
+            db = context;                         // new CompanyContext();
         }
 
         // CRUD Operations

@@ -1,12 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApplication1.context;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 
 namespace WebApplication1.Repository
 {
-    public class StudentCourseRepository
+    public class StudentCourseRepository: IStudentCourseRepository
     {
-        CompanyContext db = new CompanyContext();
+        CompanyContext db;
+
+        public StudentCourseRepository(CompanyContext context)
+        {
+            db = context;
+        }
         public List<StudentCourse> GetByStudentId(int ssn)
         {
             return db.StudentCourses

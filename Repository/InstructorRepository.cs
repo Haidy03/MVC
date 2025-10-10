@@ -1,17 +1,18 @@
 ﻿using System.Runtime.Intrinsics.X86;
 using WebApplication1.context;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
 
 namespace WebApplication1.Repository
 {
-    public class InstructorRepository
+    public class InstructorRepository: IInstructorRepository
     {
         CompanyContext db;
 
-        public InstructorRepository()
+        public InstructorRepository(CompanyContext context)
         {
-            db = new CompanyContext();
+            db = context;                                   //new CompanyContext();
         }
 
         // CRUD Operations

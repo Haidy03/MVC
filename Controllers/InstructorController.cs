@@ -3,6 +3,7 @@ using NuGet.Protocol.Core.Types;
 using System.Dynamic;
 using System.Runtime.Intrinsics.X86;
 using WebApplication1.context;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModel;
 using WebApplication1.Repository;
@@ -11,9 +12,16 @@ namespace WebApplication1.Controllers
 {
     public class InstructorController : Controller
     {
-       // CompanyContext db = new CompanyContext();
-       InstructorRepository repo = new InstructorRepository();
-        DepartmentRepository deptRepo = new DepartmentRepository();
+        // CompanyContext db = new CompanyContext();
+        IInstructorRepository repo;
+        IDepartmentRepository deptRepo;
+
+        public InstructorController(IInstructorRepository instructorRepo, IDepartmentRepository departmentRepo)
+        {
+            repo=instructorRepo;
+            deptRepo=departmentRepo;
+        }
+
         public IActionResult getall()
         {
             var instructors = repo.inswithDeptsVMs();

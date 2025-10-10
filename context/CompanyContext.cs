@@ -5,6 +5,15 @@ namespace WebApplication1.context
 {
     public class CompanyContext : DbContext
     {
+
+        public CompanyContext():base()
+        {
+
+        }
+        public CompanyContext(DbContextOptions options):base(options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=HAIDY\\SQLEXPRESS;database=tantamvcdb;trusted_connection=true;encrypt=false");

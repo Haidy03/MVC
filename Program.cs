@@ -1,5 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using WebApplication1.context;
+using WebApplication1.Controllers;
 using WebApplication1.Filters;
+using WebApplication1.IRepo;
 using WebApplication1.Middlewares;
+using WebApplication1.Repository;
 
 namespace WebApplication1
 {
@@ -8,9 +14,9 @@ namespace WebApplication1
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            //Framework service : Already Declared,Already Registerd
+            //Built in service:  Already Declared,Need to Register
             // Add services to the container.
-
             //builder.Services.AddControllersWithViews();
             builder.Services.AddControllersWithViews(options =>
             {
@@ -20,6 +26,17 @@ namespace WebApplication1
             builder.Services.AddSession(options=>
             {
                 options.IdleTimeout= TimeSpan.FromMinutes(30);
+            });
+            //Custom sevice 
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddScoped<IInstructorRepository, InstructorRepository>();
+            builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+            builder.Services.AddScoped<IStudentCourseRepository, StudentCourseRepository>();
+
+            builder.Services.AddDbContext<CompanyContext>(options=>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));
             });
 
             var app = builder.Build();

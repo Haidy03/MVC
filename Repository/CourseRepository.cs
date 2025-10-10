@@ -1,15 +1,16 @@
 ﻿using WebApplication1.context;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 
 namespace WebApplication1.Repository
 {
-    public class CourseRepository
+    public class CourseRepository: ICourseRepository
     {
         CompanyContext db;
 
-        public CourseRepository()
+        public CourseRepository(CompanyContext context)
         {
-            db = new CompanyContext();
+            db = context;           //new CompanyContext();
         }
 
         // CRUD Operations

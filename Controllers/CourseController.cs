@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.context;
+using WebApplication1.IRepo;
 using WebApplication1.Models;
 using WebApplication1.Repository;
 
@@ -9,8 +10,11 @@ namespace WebApplication1.Controllers
     {
         //CompanyContext db = new CompanyContext();
 
-        CourseRepository courseRepository=new CourseRepository();
-       
+        ICourseRepository courseRepository;
+       public CourseController(ICourseRepository courseRepo)
+        {
+            courseRepository = courseRepo;
+        }
 
         // /Course/getAll
         public IActionResult getAll()
